@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Login</title>
+</head>
+<body>
+    <h1>Employee Login</h1>
+
+    <form action="/employee_login" method="post">
+        Password: <input type="password" name="password" id="password" placeholder="Enter password">
+        <input type="submit" value="Login">
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // JavaScript to handle password masking
+                var passwordInput = document.getElementById('password');
+
+                passwordInput.addEventListener('input', function () {
+                    // Display dots ('...') as the user types
+                    this.value = '...'.substring(0, this.value.length);
+                });
+
+                passwordInput.addEventListener('focus', function () {
+                    // Clear the input field when it is focused
+                    this.value = '';
+                });
+
+                passwordInput.addEventListener('blur', function () {
+                    // If the input is left empty, display a placeholder
+                    if (this.value === '') {
+                        this.value = 'Enter password';
+                    }
+                });
+            });
+        </script>
+    </form>
+</body>
+</html>

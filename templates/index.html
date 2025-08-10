@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAX TRACKER COMPANY</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #ff6b6b, #6b6b6b);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+        }
+
+        h1 {
+            color: #333;
+            background-color: #3498db;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .card {
+            flex: 1;
+            margin: 10px;
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .card:hover {
+            background-color: #217dbb;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #fff;
+            color: #3498db;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>TAX TRACKER COMPANY</h1>
+
+        <div class="card-container">
+            <div class="card">
+                <h2>EMPLOYEE LOGIN</h2>
+                <form action="/employee_login" method="post">
+                    <label for="employee-password">Password:</label>
+                    <input type="password" id="employee-password" name="password" placeholder="Enter your password">
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+
+            <div class="card">
+                <h2>CUSTOMER LOGIN</h2>
+                <form action="/customer_login" method="post">
+                    <label for="customer-category">Category:</label>
+                    <input type="text" id="customer-category" name="customer_category" placeholder="Enter your category">
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+        </div>
+
+        <h2>New User Signup</h2>
+        <form action="/new_user_signup">
+            <input type="submit" value="Signup">
+        </form>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to the Customer Dashboard</h1>
+
+    <h2>Customer Information:</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Date Paid</th>
+            <th>Status</th>
+            <th>Due Date</th>
+        </tr>
+        {% for row in customer_info %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+                <td>{{ row[5] }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

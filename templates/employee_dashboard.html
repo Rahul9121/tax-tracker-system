@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #ff5858, #f857a6, #8449e6, #434343);
+            color: #fff;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .dashboard-container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            font-family: 'Bradley Hand', cursive; /* Use Bradley Hand cursive font */
+            color: #fff;
+            background: linear-gradient(to right, #3498db, #5a5a5a);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #0056b3;
+        }
+
+        .company-list {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .company-list li {
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #3498db, #5a5a5a);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Welcome to the Employee Dashboard</h1>
+
+        <h2>Companies:</h2>
+        <ul class="company-list">
+            {% for company in companies %}
+                <li><a href="{{ url_for('company_info', company=company[0]) }}">{{ company[0] }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
