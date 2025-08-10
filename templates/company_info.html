@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Information</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #4285f4, #0f9d58, #f4b400, #db4437);
+            color: #fff; /* White text */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .company-info {
+            background-color: rgba(255, 255, 255, 0.9); /* White background with some transparency */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Slight shadow effect */
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            text-align: left;
+            color: #000; /* Black text */
+            font-family: 'Cursive', sans-serif; /* Change font to cursive */
+        }
+
+        .company-info p {
+            margin: 0;
+            padding: 8px 0;
+        }
+
+        .company-info strong {
+            color: #4285f4; /* Google blue for strong elements */
+        }
+
+        .payment-button, .edit-button {
+            background-color: #4285f4; /* Google blue for buttons */
+            color: #fff; /* White text on buttons */
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .payment-button:hover, .edit-button:hover {
+            background-color: #3367d6; /* Darker blue on hover */
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.7); /* Light gray line with some transparency */
+            margin: 20px 0;
+        }
+
+        p.no-info {
+            text-align: center;
+            color: #fff; /* White text for no information message */
+        }
+    </style>
+</head>
+<body>
+    <h1>Company Information</h1>
+
+    <div class="cards-container">
+        {% if company_info %}
+            {% for row in company_info %}
+                <div class="company-info">
+                    <p><strong>ID:</strong> {{ row[0] }}</p>
+                    <p><strong>Company:</strong> {{ row[1] }}</p>
+                    <p><strong>Amount:</strong> {{ row[2] }}</p>
+                    <p><strong>Status:</strong> {{ row[4] }}</p>
+
+                    {% if row[3] %}
+                        <!-- Display Date Paid if available -->
+                        <p><strong>Date Paid:</strong> {{ row[3] }}</p>
+                    {% endif %}
+
+                    {% if row[5] %}
+                        <!-- Display Due Date if available -->
+                        <p><strong>Due Date:</strong> {{ row[5] }}</p>
+                    {% endif %}
+
+                    {% if row[4] == 'unpaid' %}
+                        <!-- Display the "Pay Here" button for unpaid status -->
+                        <form action="/pay_here" method="post">
+                            <input type="hidden" name="payment_id" value="{{ row[0] }}">
+                            <button class="payment-button" type="submit">Pay Here</button>
+                        </form>
+                    {% endif %}
+
+                    <!-- Display the "Edit" button -->
+                    <button class="edit-button" onclick="editRow('{{ row[0] }}')">Edit</button>
+                </div>
+
+                {% if not loop.last %}
+                    <hr>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p class="no-info">No information available for this company.</p>
+        {% endif %}
+    </div>
+
+    <!-- JavaScript function to handle edit -->
+    <script>
+        function editRow(recordId) {
+            // Redirect to the edit page with the record ID
+            window.location.href = "/edit_record/" + recordId;
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
