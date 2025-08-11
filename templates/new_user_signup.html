@@ -3,91 +3,344 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New User Signup</title>
+    <title>Company Registration - Tax Tracker System</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #bdc3c7, #2c3e50);
-            color: #333;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            padding: 20px;
         }
 
         .signup-container {
-            text-align: center;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
             width: 100%;
+            max-width: 500px;
         }
 
-        h1 {
-            color: #333;
-            background: linear-gradient(to right, #ff5858, #f857a6, #8449e6, #434343);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .info-banner {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: white;
+            padding: 15px 20px;
+            margin: 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .info-banner i {
+            margin-right: 8px;
+        }
+
+        .form-container {
+            padding: 40px 30px;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            position: relative;
         }
 
         label {
             display: block;
-            margin-top: 15px;
-            font-weight: bold;
-            color: #555;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
         }
 
-        input {
-            width: calc(100% - 24px);
-            padding: 12px;
-            margin-top: 8px;
-            margin-bottom: 20px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            background-color: #f9f9f9;
-            color: #555;
+        .input-wrapper {
+            position: relative;
         }
 
-        input[type="submit"] {
-            background-color: #4CAF50;
+        .input-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #e1e1e1;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus {
+            outline: none;
+            border-color: #f093fb;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(240, 147, 251, 0.1);
+        }
+
+        input[type="text"]:focus + .input-wrapper i,
+        input[type="number"]:focus + .input-wrapper i {
+            color: #f093fb;
+        }
+
+        .btn {
+            width: 100%;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             color: white;
-            padding: 14px 20px;
-            margin: 8px 4px;
+            padding: 15px;
             border: none;
-            border-radius: 5px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
             cursor: pointer;
-            width: 50%;
-            font-size: 16px;
-            transition: background-color 0.3s;
-            display: inline-block;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
-        input[type="submit"]:hover {
-            background-color: #45a049;
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(240, 147, 251, 0.3);
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back-link a {
+            color: #f093fb;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: #f5576c;
+            transform: translateX(-3px);
+        }
+
+        .demo-hint {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 25px;
+            color: #856404;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .demo-hint i {
+            color: #ffc107;
+            margin-right: 8px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .input-help {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .success-animation {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .success-animation.show {
+            display: block;
+        }
+
+        .success-icon {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 20px;
+            animation: bounce 1s ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 60%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            80% { transform: translateY(-5px); }
+        }
+
+        @media (max-width: 480px) {
+            .signup-container {
+                margin: 10px;
+                max-width: none;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="signup-container">
-        <h1>New User Signup</h1>
+        <div class="header">
+            <div class="header-icon">
+                <i class="fas fa-user-plus"></i>
+            </div>
+            <h1>Company Registration</h1>
+            <p>Join our tax tracking system</p>
+        </div>
 
-        <form action="/new_user_signup" method="post">
-            <!-- The ID is generated automatically, so no need to display it in the form -->
-            <label for="company">Company:</label>
-            <input type="text" id="company" name="company" required>
+        <div class="info-banner">
+            <i class="fas fa-shield-alt"></i>
+            Register your company for professional tax management
+        </div>
 
-            <label for="amount">Amount:</label>
-            <input type="text" id="amount" name="amount" required>
+        <div class="form-container">
+            <div class="demo-hint">
+                <i class="fas fa-info-circle"></i>
+                <strong>Demo Mode:</strong> This will create a new company record in our system
+            </div>
 
-            <input type="submit" value="Signup">
-        </form>
+            <form action="/new_user_signup" method="post" id="signupForm">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="company">Company Name</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-building"></i>
+                            <input type="text" id="company" name="company" placeholder="Enter your company name" required>
+                        </div>
+                        <div class="input-help">
+                            <i class="fas fa-info-circle"></i>
+                            This will be your unique identifier in the system
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="amount">Initial Tax Amount ($)</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-dollar-sign"></i>
+                            <input type="number" id="amount" name="amount" placeholder="Enter initial tax amount" step="0.01" min="0" required>
+                        </div>
+                        <div class="input-help">
+                            <i class="fas fa-calculator"></i>
+                            Starting tax liability amount for your company
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">
+                    <i class="fas fa-check-circle"></i>
+                    Register Company
+                </button>
+            </form>
+
+            <div class="success-animation" id="successAnimation">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3>Registration Successful!</h3>
+                <p>Your company has been added to our system.</p>
+            </div>
+
+            <div class="back-link">
+                <a href="/">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
+            </div>
+        </div>
     </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            // Add some visual feedback
+            const btn = document.querySelector('.btn');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Registering...';
+            btn.disabled = true;
+            
+            // Reset after a short delay to show loading state
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 2000);
+        });
+
+        // Format amount input as currency
+        document.getElementById('amount').addEventListener('input', function(e) {
+            let value = e.target.value;
+            // Remove any non-numeric characters except decimal
+            value = value.replace(/[^0-9.]/g, '');
+            e.target.value = value;
+        });
+
+        // Auto-capitalize company name
+        document.getElementById('company').addEventListener('input', function(e) {
+            let value = e.target.value;
+            // Capitalize first letter of each word
+            value = value.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
+            e.target.value = value;
+        });
+    </script>
 </body>
 </html>
 
