@@ -3,15 +3,313 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Login</title>
+    <title>Customer Login - Tax Tracker System</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .info-banner {
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
+            padding: 15px 20px;
+            margin: 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .info-banner i {
+            margin-right: 8px;
+        }
+
+        .form-container {
+            padding: 40px 30px;
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #e1e1e1;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #28a745;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+        }
+
+        input[type="text"]:focus + .input-wrapper i {
+            color: #28a745;
+        }
+
+        .btn {
+            width: 100%;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(40, 167, 69, 0.3);
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back-link a {
+            color: #28a745;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: #20c997;
+            transform: translateX(-3px);
+        }
+
+        .demo-hint {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 25px;
+            color: #155724;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .demo-hint i {
+            color: #28a745;
+            margin-right: 8px;
+        }
+
+        .company-examples {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .company-examples h4 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .company-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .company-tag {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .company-tag:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                margin: 10px;
+                max-width: none;
+            }
+            
+            .form-container {
+                padding: 30px 20px;
+            }
+            
+            .company-tags {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Customer Login</h1>
+    <div class="login-container">
+        <div class="header">
+            <div class="header-icon">
+                <i class="fas fa-building"></i>
+            </div>
+            <h1>Customer Portal</h1>
+            <p>Access your company tax information</p>
+        </div>
 
-    <form action="/customer_login" method="post">
-        Category: <input type="text" name="customer_category">
-        <input type="submit" value="Login">
-    </form>
+        <div class="info-banner">
+            <i class="fas fa-info-circle"></i>
+            <strong>Demo Companies:</strong> derm, tek
+        </div>
+
+        <div class="form-container">
+            <div class="demo-hint">
+                <i class="fas fa-lightbulb"></i>
+                <strong>Demo Mode:</strong> Use company names below to access sample data
+            </div>
+
+            <div class="company-examples">
+                <h4>
+                    <i class="fas fa-tags"></i>
+                    Available Demo Companies:
+                </h4>
+                <div class="company-tags">
+                    <span class="company-tag" onclick="fillCompanyName('derm')">derm</span>
+                    <span class="company-tag" onclick="fillCompanyName('tek')">tek</span>
+                </div>
+            </div>
+
+            <form action="/customer_login" method="post">
+                <div class="input-group">
+                    <label for="customer_category">Company Name</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-building"></i>
+                        <input type="text" id="customer_category" name="customer_category" placeholder="Enter your company name" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">
+                    <i class="fas fa-search"></i>
+                    Access Company Info
+                </button>
+            </form>
+
+            <div class="back-link">
+                <a href="/">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function fillCompanyName(companyName) {
+            document.getElementById('customer_category').value = companyName;
+            // Add a nice animation feedback
+            const input = document.getElementById('customer_category');
+            input.style.borderColor = '#28a745';
+            input.style.background = 'white';
+            setTimeout(() => {
+                input.style.borderColor = '#e1e1e1';
+                input.style.background = '#f8f9fa';
+            }, 1000);
+        }
+    </script>
 </body>
 </html>
 
