@@ -35,7 +35,7 @@ The application uses SQLite with sample data automatically populated on first ru
 
 ## Deployment
 
-This application is configured for deployment on Heroku and other cloud platforms.
+This application is configured for deployment on Heroku and other cloud platforms, currently Deployed on Render(link attached).
 
 ## Project Structure
 
